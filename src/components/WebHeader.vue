@@ -2,8 +2,8 @@
     <div id="webHeader">
         <el-row type="flex" align="middle">
             <el-col :span="10">
-                <el-row :gutter="20" type="flex" align="middle">
-                    <el-col :span="3" push="1">
+                <el-row :gutter=20 type="flex" align="middle">
+                    <el-col :span="3" :push=1>
                         <el-avatar shape="square" :size="40" :src="avatar"></el-avatar>
                     </el-col>
                     <el-col :span="3">

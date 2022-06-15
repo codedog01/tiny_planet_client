@@ -14,19 +14,19 @@
 
       <el-main class="containerMain ">
 
-        <el-row gutter="24" type="flex" justify="center">
+        <el-row :gutter=24 type="flex" justify="center">
           <el-col :span="12">
             <div class="left">
               <div class="blog" v-for="blog in blogList" :key="blog.id">
                 <div style="font-weight: 800;margin-bottom:20px">{{ blog.title }}</div>
-                <el-row gutter="24" type="flex" justify="start">
-                  <el-col :span="3">
+                <el-row :gutter=24 type="flex" justify="start">
+                  <el-col :span="4">
                     <div class="text">
                       <i class="el-icon-user-solid"></i>
                       <span>{{ blog.author }}</span>
                     </div>
                   </el-col>
-                  <el-col :span="4">
+                  <el-col :span="6">
                     <div class="text">
                       <i class="el-icon-time"></i>
                       <span>{{ blog.createData }}</span>
@@ -43,10 +43,10 @@
 
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="6">
             <div class="right">
               <div class="center">
-                <el-avatar :size="100" src="https://empty" @error="errorHandler">
+                <el-avatar :size="100" src="https://empty">
                   <img src="https://blog.lystu.cn/avatar.webp" />
                 </el-avatar>
               </div>
@@ -55,7 +55,7 @@
               </div>
               <div class="center">
                 <el-row>
-                  <el-col :span="6" style="border-right:1px black solid" offset="6">
+                  <el-col :offset=6 :span="6" style="border-right:1px black solid">
                     <div style="font-weight:800;font-size:16px">11</div>
                     <div style="font-weight:800;margin-top:10px;font-size:13px" class="">Articles</div>
                   </el-col>
@@ -70,24 +70,41 @@
               <!-- 分类 -->
               <div>
                 <div class="title">
-                  <i class="el-icon-guide"></i>
-                  <span>Categories</span>
+                  <i class="el-icon-menu"></i>
+                  <span> Categories</span>
                 </div>
                 <div class="categories" v-for="category in userInfo.categories" :key="category.id">
                   <div class="categories_name">{{ category.name }}</div>
                   <div class="categories_count">{{ category.count }}</div>
                 </div>
               </div>
+              <el-divider></el-divider>
               <!-- 标签 -->
               <div>
                 <div class="title">
-                  <i class="el-icon-guide"></i>
-                  <span>Categories</span>
+                  <i class="el-icon-s-flag"></i>
+                  <span> Tags</span>
                 </div>
-                <div class="categories" v-for="category in userInfo.categories" :key="category.id">
-                  <div class="categories_name">{{ category.name }}</div>
-                  <div class="categories_count">{{ category.count }}</div>
+                <div class="user_tags">
+                  <tag-cloud id="tagCloud" :data="hotTag" @mouseover.native="mouseoverTags" @clickTag="clickTagItem"
+                    :config="tagCloudConfig">
+                  </tag-cloud>
                 </div>
+              </div>
+              <el-divider></el-divider>
+              <!-- 友情 -->
+              <div>
+                <div class="title">
+                  <i class="el-icon-s-finance"></i>
+                  <span> Friend Links</span>
+                </div>
+                <div class="user_tags">
+                  <el-popover placement="bottom" title="缄默" width="200" trigger="hover"
+                    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+                    <el-button slot="reference">hover 激活</el-button>
+                  </el-popover>
+                </div>
+
               </div>
             </div>
           </el-col>
@@ -110,6 +127,15 @@ export default {
   },
   data () {
     return {
+      tagCloudConfig: {
+        radius: 120, // 滚动半径，Number，单位px
+        maxFont: 24, // 最大字体大小
+        color: '', // 字体颜色。为null时随机s
+        rotateAngleXbase: 600, // X方向旋转速度基数，数越小速度越快
+        rotateAngleYbase: 600, // Y方向旋转速度基数，数越小速度越快
+        hover: false // 是否开启悬浮联动
+      },
+      hotTag: [{ id: '-1', name: '冷澳' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }],
       userName: '肥羊',
       blogList: [{
         id: '1',
@@ -155,12 +181,61 @@ export default {
           id: 1,
           name: 'MySQL',
           count: 9
-        }]
+        }],
+        tags: [
+          {
+            id: '1',
+            name: 'SpringSpring'
+          }, {
+            id: '1',
+            name: 'SprinSpringSpringg'
+          }, {
+            id: '1',
+            name: 'SprSpringing'
+          }, {
+            id: '1',
+            name: 'Sprdeing'
+          }, {
+            id: '1',
+            name: 'Sprewing'
+          }, {
+            id: '1',
+            name: 'Sprytruing'
+          }, {
+            id: '1',
+            name: 'Spring'
+          }, {
+            id: '1',
+            name: 'Spring'
+          }, {
+            id: '1',
+            name: 'Spring'
+          }
+        ]
       }
     }
   },
   methods: {
+    clickTagItem (event) {
+      console.log(event)
+    },
 
+    mouseoverTags (event) {
+      // const children = document.getElementById('tagCloud').childNodes
+      // console.log(typeof children)
+      // children.forEach((element) => {
+      //   console.log(element.nodevalue)
+      // })
+      // if (event.toElement.nodeName === 'P') {
+      //   const e = document.createEvent('MouseEvents')
+      //   e.initEvent('dblclick', true, true)
+      //   document.getElementById('world').dispatchEvent(e)
+
+      //   const es = event.toElement.style
+      //   es.setProperty('width', 100 + 'px')
+      //   es.setProperty('font-size', 24 + 'px')
+      // }
+    }
   },
   created () {
     this.clientWidth = document.documentElement.clientWidth
@@ -172,11 +247,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.user_tags {
+  margin-top: 10px;
+  // box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  transition: all .3s;
+  // overflow: hidden;
+  border-radius: .25rem;
+}
+
+/deep/.tag-cloud>p:hover {
+  // border: 1px red solid;
+  // font-size: 24px;
+  cursor: pointer;
+}
+
 .container {
   background-color: antiquewhite;
 }
 
-.text {
+user_tags_item .text {
   font-size: 13px;
   color: rgb(129, 129, 129);
 }
