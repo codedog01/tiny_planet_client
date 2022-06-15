@@ -19,8 +19,8 @@
           </div>
 
         </el-header>
-
-        <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" label-width="100px">
+        <!-- :rules="rules" -->
+        <el-form :model="loginForm" status-icon ref="loginForm" label-width="100px">
           <el-tabs :stretch=true v-model="loginType">
             <el-tab-pane label=" 免密登录" name="0"></el-tab-pane>
             <el-tab-pane label="密码登录" name="1"> </el-tab-pane>
@@ -46,21 +46,20 @@
               <el-input :disabled=true type="password" v-model="loginForm.password" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item style="text-align:center;">
-              <el-button v-if="loginType === '0'" style="width:100%" type="primary" @click="submitForm('ruleForm')">
+              <el-button v-if="loginType === '0'" style="width:100%" type="primary" @click="telephoneLogin">
                 <span>
                   注册/
                 </span>
                 登录
               </el-button>
-              <el-button v-if="loginType === '1'" style="width:100%" type="primary" @click="submitForm('ruleForm')">
+              <el-button v-if="loginType === '1'" style="width:100%" type="primary" @click="passwordLogin">
                 登录
               </el-button>
               <el-button v-if="loginType === '2' && !cameraOpen" style="width:100%" type="primary"
                 @click="getCompetence">
                 打开摄像头
               </el-button>
-              <el-button v-if="loginType === '2' && cameraOpen" style="width:100%" type="primary"
-                @click="submitForm('ruleForm')">
+              <el-button v-if="loginType === '2' && cameraOpen" style="width:100%" type="primary" @click="faceLogin">
                 校验/登录
               </el-button>
             </el-form-item>
@@ -103,6 +102,9 @@
 
 <script>
 
+import * as API from '@/server/api'
+import * as AesUtil from '@/util/aesUtil'
+
 require('tracking/build/tracking-min.js')
 require('tracking/build/data/face-min.js')
 require('tracking/build/data/mouth-min.js')
@@ -120,7 +122,7 @@ export default {
       type: '',
       btnText: '获取验证码',
       disabled: false, // 获取验证码按钮
-      loginForm: { telephone: '', password: '', verificationCode: '' },
+      loginForm: { telephone: '', password: '', verificationCode: '', faceBase64: '', loginType: '' },
       cameraOpen: false, // 是否开启摄像头
       rules: {
         telephone: [
@@ -180,25 +182,35 @@ export default {
 
     qqLogin () { alert('qq登录') },
     wechatLogin () { alert('微信登录') },
-    faceLogin () {
 
+    telephoneLogin () {
+      API.telephoneLogin(this.loginForm)
     },
-    telephoneLogin () { },
-    passwordLogin () { },
-    // 人脸处理
-    faceSubmit () {
+    passwordLogin () {
+      const { ...data } = this.loginForm
+      data.password = AesUtil.encrypt(this.loginForm.password)
+      const a = API.passwordLogin(data).then((res) => {
+        console.log('res', res)
+        if (res.data !== null) {
+          this.$message.success('登录成功！')
+        } else {
+          this.$message.error('手机号或密码错误！')
+        }
+      }).catch(res => {
+        console.log(res)
+      })
+      console.log('ssss', a)
+    },
+    faceLogin () {
       const canvas = document.getElementById('canvas')
       const context = canvas.getContext('2d')
       const video = document.getElementById('video')
       context.drawImage(video, 0, 0, 1000, 700)
-      canvas.toBlob((blob) => {
-        // axios.post({ faceUrl: URL.createObjectURL(blob) }).then((res) => {
-        //   console.log("上传成功");
-        // });
-        const reader = new FileReader()
-        reader.readAsDataURL(blob)
-      })
+      const faceBase64 = canvas.toDataURL('img/jpeg')
+      this.loginForm.faceBase64 = faceBase64
+      API.faceLogin(this.loginForm)
     },
+
     // 打开摄像头
     getCompetence () {
       const _this = this
@@ -242,7 +254,7 @@ export default {
         _this.thisVideo.onloadedmetadata = function (e) {
           _this.thisVideo.play()
           _this.cameraOpen = true
-          _this.checkFace()
+          // _this.checkFace()
         }
       }).catch((err) => {
         Promise.reject(err)
