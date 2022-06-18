@@ -1,9 +1,7 @@
 <template>
   <div class="HoneView">
-    <WebHeader></WebHeader>
     <el-container>
       <el-header class="containerHeader" ref="containerHeader" height="450px">
-
         <el-row type="flex" justify="center" align="middle">
           <el-col>
             <div style="font-size:35px; font-weight: 400;">LY'Blog</div>
@@ -46,7 +44,7 @@
           <el-col :span="6">
             <div class="right">
               <div class="center">
-                <el-avatar :size="100" src="https://empty">
+                <el-avatar :size="100" src="https://blog.lystu.cn/avatar.webp">
                   <img src="https://blog.lystu.cn/avatar.webp" />
                 </el-avatar>
               </div>
@@ -118,12 +116,10 @@
 </template>
 
 <script>
-import WebHeader from '@/components/WebHeader.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    WebHeader
   },
   data () {
     return {
@@ -135,28 +131,39 @@ export default {
         rotateAngleYbase: 600, // Y方向旋转速度基数，数越小速度越快
         hover: false // 是否开启悬浮联动
       },
-      hotTag: [{ id: '-1', name: '冷澳' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }, { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }, { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' }, { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' }, { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' }, { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' }, { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' }, { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' }, { id: '76f652df03db43349272a9aff492b065', name: '榕江县' }, { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' }, { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' }],
+      hotTag: [
+        { id: '-1', name: '冷澳' },
+        { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' },
+        { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' },
+        { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' },
+        { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' },
+        { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' },
+        { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' },
+        { id: '76f652df03db43349272a9aff492b065', name: '榕江县' },
+        { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' },
+        { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' },
+        { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }],
       userName: '肥羊',
       blogList: [{
-        id: '1',
+        id: '5',
         title: 'MyBatis',
         author: '肥羊',
         createData: '2022/6/14',
         tags: [{ id: '1', name: 'MyBatis' }]
       }, {
-        id: '1',
+        id: '4',
         title: 'Spring',
         author: '肥羊',
         createData: '2022/6/14',
         tags: [{ id: '1', name: 'Spring' }]
       }, {
-        id: '1',
+        id: '3',
         title: 'SpringMVC',
         author: '肥羊',
         createData: '2022/6/14',
         tags: [{ id: '1', name: 'SpringMVC' }]
       }, {
-        id: '1',
+        id: '2',
         title: 'SpringBoot',
         author: '肥羊',
         createData: '2022/6/14',
@@ -170,11 +177,11 @@ export default {
       }],
       userInfo: {
         categories: [{
-          id: 1,
+          id: 3,
           name: 'Java',
           count: 55
         }, {
-          id: 1,
+          id: 2,
           name: 'Linux',
           count: 100
         }, {
@@ -187,28 +194,28 @@ export default {
             id: '1',
             name: 'SpringSpring'
           }, {
-            id: '1',
+            id: '2',
             name: 'SprinSpringSpringg'
           }, {
-            id: '1',
+            id: '3',
             name: 'SprSpringing'
           }, {
-            id: '1',
+            id: '4',
             name: 'Sprdeing'
           }, {
-            id: '1',
+            id: '5',
             name: 'Sprewing'
           }, {
-            id: '1',
+            id: '6',
             name: 'Sprytruing'
           }, {
-            id: '1',
+            id: '7',
             name: 'Spring'
           }, {
-            id: '1',
+            id: '8',
             name: 'Spring'
           }, {
-            id: '1',
+            id: '9',
             name: 'Spring'
           }
         ]
@@ -240,25 +247,20 @@ export default {
   created () {
     this.clientWidth = document.documentElement.clientWidth
     this.clientHeight = document.documentElement.clientHeight
-  },
-  mounted () {
   }
+
 }
 </script>
 
 <style lang="scss" scoped>
 .user_tags {
   margin-top: 10px;
-  // box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
   padding: 10px;
   transition: all .3s;
-  // overflow: hidden;
   border-radius: .25rem;
 }
 
 /deep/.tag-cloud>p:hover {
-  // border: 1px red solid;
-  // font-size: 24px;
   cursor: pointer;
 }
 

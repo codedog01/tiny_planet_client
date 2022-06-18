@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-// import LoginView from '../views/LoginView.vue'
+import CategoriesView from '../views/CategoriesView.vue'
+import LoginView from '../views/LoginView.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,14 @@ const routes = [
     meta: {
       requireAuth: true
     }
+  }, {
+    path: '/login',
+    component: LoginView,
+    name: '分类',
+    meta: {
+      title: '分类',
+      requireAuth: true
+    }
   },
   {
     path: '/home',
@@ -21,6 +30,15 @@ const routes = [
     name: '首页',
     meta: {
       title: '首页',
+      requireAuth: true
+    }
+  },
+  {
+    path: '/categories',
+    component: CategoriesView,
+    name: '分类',
+    meta: {
+      title: '分类',
       requireAuth: true
     }
   }

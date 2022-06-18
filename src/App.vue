@@ -1,12 +1,17 @@
 <template>
-  <transition name="fade">
-    <router-view class="app"></router-view>
-  </transition>
+  <div>
+    <WebHeader></WebHeader>
+    <transition name="fade">
+      <router-view class="app"></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
 
-export default {}
+// components: {
+//   WebHeader
+// },
 </script>
 <style>
 .app {

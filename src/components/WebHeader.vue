@@ -17,35 +17,35 @@
             </el-col>
             <el-col :span="14">
                 <el-menu active-text-color="#51c4d3" text-color="#0f1423" :default-active="activeIndex"
-                    class="el-menu-demo" mode="horizontal">
-                    <el-menu-item index="0">
+                    class="el-menu-demo" mode="horizontal" :router=true @select="menuSelect">
+                    <el-menu-item>
                         <el-input clearable size="small" placeholder="请输入内容" prefix-icon="el-icon-search"
                             v-model="searchText" @keyup.enter.native="search">
                         </el-input>
                     </el-menu-item>
-                    <el-menu-item index="1">
+                    <el-menu-item index="/home">
                         <i class="el-icon-reading"></i>
                         <span slot="title">首页</span>
                     </el-menu-item>
-                    <el-menu-item index="2">
+                    <el-menu-item index="/categories">
                         <i class="el-icon-guide"></i>
                         <span slot="title">分类</span>
                     </el-menu-item>
 
-                    <el-menu-item index="3">
+                    <el-menu-item index="/tags">
                         <i class="el-icon-price-tag"></i>
                         <span slot="title">标签</span>
                     </el-menu-item>
 
-                    <el-menu-item index="4">
+                    <el-menu-item index="/timeline">
                         <i class="el-icon-time"></i>
                         <span slot="title">时间轴</span>
                     </el-menu-item>
-                    <el-menu-item index="5">
+                    <el-menu-item index="/chat">
                         <i class="el-icon-chat-dot-round"></i>
                         <span slot="title">好友</span>
                     </el-menu-item>
-                    <el-menu-item index="6">
+                    <el-menu-item index="/about">
                         <i class="el-icon-paperclip"></i>
                         <span slot="title">关于</span>
                     </el-menu-item>
@@ -59,18 +59,24 @@
 <script>
 export default {
   name: 'webHeader',
+  props: {
+
+  },
   data () {
     return {
       avatar: 'https://blog.lystu.cn/avatar.webp',
-      activeIndex: '1',
-      searchText: '',
-      author: '肥羊'
-
+      author: '肥羊',
+      searchText: '', //
+      activeIndex: '/home'
     }
   },
   methods: {
     search () {
       console.log(this.searchText)
+    },
+    menuSelect (index, indexPath) {
+      console.log(indexPath)
+      this.activeIndex = index
     }
   }
 }
@@ -91,7 +97,7 @@ export default {
 
 /deep/.el-menu--horizontal>.el-menu-item:hover {
     color: #51c4d3;
-    background-color: #51c4d3;
+    // background-color: #51c4d3;
 }
 
 #webHeader {
