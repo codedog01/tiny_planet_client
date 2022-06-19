@@ -11,8 +11,8 @@ import * as THREE from 'three' // 引用Three.js
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
 
 import ForceGraph3D from '3d-force-graph'
-// import SpriteText from 'three-spritetext'
-import { CSS2DObject, CSS2DRenderer } from 'three-css2drender'
+import SpriteText from 'three-spritetext'
+// import { CSS2DObject, CSS2DRenderer } from 'three-css2drender'
 
 export default {
   name: 'categoriesView',
@@ -28,9 +28,28 @@ export default {
   methods: {
     // 初始化函数
     Init () {
-      this.initGraph()
-      console.log('CSS2DRenderer', CSS2DRenderer)
-      console.log('CSS2DObject', CSS2DObject)
+      // this.initGraph()
+      this.initTextNode()
+    },
+    initTextNode () {
+      const Graph = ForceGraph3D()(this.$refs.container)
+        .jsonUrl('json/miserables.json')
+        .nodeAutoColorBy('group')
+        .nodeThreeObject(node => {
+          const sprite = new SpriteText(node.id)
+          sprite.material.depthWrite = false // make sprite background transparent
+          sprite.color = node.color
+          sprite.textHeight = 8
+          return sprite
+        })
+
+      // Spread nodes a little wider
+      Graph.d3Force('charge').strength(-120)
+      const bloomPass = new UnrealBloomPass()
+      bloomPass.strength = 1
+      bloomPass.radius = 1
+      bloomPass.threshold = 0.1
+      Graph.postProcessingComposer().addPass(bloomPass)
     },
     initGraph (data) {
       const imgs = ['cat.jpg', 'b', 'c']
@@ -50,13 +69,23 @@ export default {
       console.log(gData)
 
       const Graph = ForceGraph3D()(this.$refs.container)
-        .backgroundColor('black') // 背景颜色，支持内置颜色和RGB
+        .backgroundColor('white') // 背景颜色，支持内置颜色和RGB
       // .width(this.$refs.graph.parentElement.offsetWidth) // 画布宽度(充满父级容器)
       // .height(this.$refs.graph.parentElement.offsetHeight + 150) // 画布高度(充满父级容器)
         .showNavInfo(false)
         .linkColor('#0x442f40')
         .linkCurvature('id')
         .linkCurveRotation('id')
+        .linkWidth(0.3)
+        .cooldownTime(Infinity)
+        // .d3AlphaDecay(0) // alpha 衰减率
+        // .d3VelocityDecay(0) // 默认为 0.4,较低的衰减系数可以使得迭代次数更多，其布局结果也会更理性，但是可能会引起数值不稳定从而导致震荡。
+
+      // Deactivate existing forces
+      // .d3Force('center', null) // centering作用力可以使得节点布局开之后围绕某个中心
+      // .d3Force('charge', null) // 作用力应用在所用的节点之间
+
+        // Add collision and bounding box forces
         .nodeLabel('id') // 鼠标悬停显示文字
         .onNodeClick(node => {
           // Aim at node from outside it
@@ -104,14 +133,14 @@ export default {
       const segments = 200
 
       // 火星几何体
-      const geom = new THREE.SphereGeometry(20, segments, segments)
+      const geom = new THREE.SphereGeometry(10, segments, segments)
 
       // 漫反射贴图
       const mapTexture = new THREE.TextureLoader().load('/planets/sun.jpg')
       mapTexture.repeat.set(1, 1)
 
       // 凹凸贴图
-      const bumpMapTexture = new THREE.TextureLoader().load('/planets/sun.jpg')
+      const bumpMapTexture = new THREE.TextureLoader().load('')
       bumpMapTexture.repeat.set(1, 1)
 
       // 材质

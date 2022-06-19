@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {"id": "MySQL", "group": 1},
+    {"id": "事务", "group": 1},
+    {"id": "索引", "group": 1},
+    {"id": "JPA", "group": 2},
+    {"id": "基本语法", "group": 2},
+    {"id": "高级语法", "group": 2},
+    {"id": "JAVA", "group": 3},
+    {"id": "IO", "group": 3},
+    {"id": "多线程", "group": 3},
+    {"id": "Spring", "group": 4},
+    {"id": "IOC", "group": 4},
+    {"id": "AOP", "group": 4}
+
+
+  ],
+  "links": [
+   
+    {"source": "MySQL", "target": "JAVA", "value": 1},
+    {"source": "JAVA", "target": "Spring", "value": 1},
+    {"source": "Spring", "target": "JPA", "value": 1},
+
+    {"source": "MySQL", "target": "事务", "value": 0},
+    {"source": "MySQL", "target": "索引", "value": 0},
+    {"source": "JAVA", "target": "IO", "value": 0},
+    {"source": "JAVA", "target": "多线程", "value": 0},
+    {"source": "Spring", "target": "IOC", "value": 0},
+    {"source": "Spring", "target": "AOP", "value": 0},
+    {"source": "JPA", "target": "基本语法", "value": 0},
+    {"source": "JPA", "target": "高级语法", "value":0}
+
+
+  ]
+}
