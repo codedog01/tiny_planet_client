@@ -8,8 +8,8 @@ const http = {}
 
 // axios.create()是添加了自定义配置的新的axios
 const instance = axios.create({
-  timeout: 5000
-  // baseURL
+  timeout: 5000,
+  baseURL: '/api'
 })
 
 // 添加请求拦截器
