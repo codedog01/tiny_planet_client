@@ -1,7 +1,5 @@
 import axios from '@/server/http'
 
-// 根路径的处理
-
 // 人脸登录
 export function faceLogin (data) {
   return axios.post('/account/faceLogin', data)

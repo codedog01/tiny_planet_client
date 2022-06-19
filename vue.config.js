@@ -10,7 +10,7 @@ module.exports = defineConfig({
         target: process.env.VUE_APP_INTERFACE_URL,
         changOrigin: true,
         pathRewrite: {
-          '^/api': 'dsdsd'
+          '^/api': ''
         }
       }
     }

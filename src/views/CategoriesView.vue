@@ -42,19 +42,18 @@ export default {
             target: Math.round(Math.random() * (id - 1))
           }))
       }
-      const Graph = ForceGraph3D()(this.$refs.container)
+      ForceGraph3D()(this.$refs.container)
         .backgroundColor('black') // 背景颜色，支持内置颜色和RGB
         // .width(this.$refs.graph.parentElement.offsetWidth) // 画布宽度(充满父级容器)
         // .height(this.$refs.graph.parentElement.offsetHeight + 150) // 画布高度(充满父级容器)
         .showNavInfo(false)
         .nodeThreeObject(({ img }) => {
-          const imgTexture = new THREE.TextureLoader().load('http://qzapp.qlogo.cn/qzapp/101983660/C41ADE5C593532E29AFC2C432FD57A7C/100')
+          const imgTexture = new THREE.TextureLoader().load('https://cloudleng.oss-cn-beijing.aliyuncs.com/avatar/006DFKaTgy1fgwfujkdqaj30hs0fpdgk.jpg?Expires=1655611716&OSSAccessKeyId=TMP.3KiQficWFxnjRn4c6uLP9FJk1g5omaydnYnYgxxnvJt8bNd64MbCFC54airjBRfq4ak2wNC92zj3gFyynUV2JFRf3969MK&Signature=Budq8evJ%2FhUC3pieeGSFQuiIlTk%3D')
           const material = new THREE.SpriteMaterial({ map: imgTexture }) // 文件名称
           const sprite = new THREE.Sprite(material)
           sprite.scale.set(12, 12)
           return sprite
         }).graphData(gData)
-      console.log(Graph)
     },
     square () {
       /**
