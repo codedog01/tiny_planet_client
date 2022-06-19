@@ -16,9 +16,8 @@ Vue.component('WebHeader', WebHeader)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Vuex)
-Vue.use(tagCloud)
-
 Vue.use(store)
+Vue.use(tagCloud)
 new Vue({
   router,
 

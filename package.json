@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build",
+    "dev": "vue-cli-service serve --mode development",
     "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service serve --mode dev",
-    "prod": "vue-cli-service serve --mode prod"
+    "test": "vue-cli-service build --mode test",
+    "prod": "vue-cli-service build --mode prod"
   },
   "dependencies": {
     "3d-force-graph": "^1.70.10",
