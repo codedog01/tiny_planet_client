@@ -14,6 +14,9 @@
 // },
 </script>
 <style>
+    body {
+      /* background-color: #EBF0F5; */
+    }
 .app {
   width: 100%;
   height: 100vh;

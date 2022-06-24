@@ -2,6 +2,9 @@
   <div class="HoneView">
     <el-container>
       <el-header class="containerHeader" ref="containerHeader" height="450px">
+        <div>
+          <particles-bg type="square" :bg="true" :num=11 />
+        </div>
         <el-row type="flex" justify="center" align="middle">
           <el-col>
             <div style="font-size:35px; font-weight: 400;">LY'Blog</div>
@@ -10,61 +13,39 @@
         </el-row>
       </el-header>
 
-      <el-main class="containerMain ">
-
+      <el-main class="container_main ">
         <el-row :gutter=24 type="flex" justify="center">
           <el-col :span="12">
             <div class="left">
-              <div class="blog" v-for="blog in blogList" :key="blog.id">
-                <div style="font-weight: 800;margin-bottom:20px">{{ blog.title }}</div>
-                <el-row :gutter=24 type="flex" justify="start">
-                  <el-col :span="4">
-                    <div class="text">
-                      <i class="el-icon-user-solid"></i>
-                      <span>{{ blog.author }}</span>
-                    </div>
-                  </el-col>
-                  <el-col :span="6">
-                    <div class="text">
-                      <i class="el-icon-time"></i>
-                      <span>{{ blog.createData }}</span>
-                    </div>
-                  </el-col>
-                  <el-col>
-                    <div class="text">
-                      <i class="el-icon-s-ticket"></i>
-                      <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{ tag.name }}</span>
-                    </div>
-                  </el-col>
-                </el-row>
-              </div>
-
+              <BlogList :blogList="blogList"></BlogList>
             </div>
           </el-col>
           <el-col :span="6">
             <div class="right">
-              <div class="center">
-                <el-avatar :size="100" src="https://blog.lystu.cn/avatar.webp">
-                  <img src="https://blog.lystu.cn/avatar.webp" />
-                </el-avatar>
-              </div>
-              <div class="center">
-                {{ userName }}
-              </div>
-              <div class="center">
-                <el-row>
-                  <el-col :offset=6 :span="6" style="border-right:1px black solid">
-                    <div style="font-weight:800;font-size:16px">11</div>
-                    <div style="font-weight:800;margin-top:10px;font-size:13px" class="">Articles</div>
-                  </el-col>
-                  <el-col :span="6">
-                    <div style="font-weight:800;font-size:16px">120</div>
-                    <div style="font-weight:800;margin-top:10px;font-size:13px">Tags</div>
-                  </el-col>
-                </el-row>
-              </div>
+              <div class="user_info">
+                <div class="center">
+                  <el-avatar :size="100" src="https://blog.lystu.cn/avatar.webp">
+                    <img src="https://blog.lystu.cn/avatar.webp" />
+                  </el-avatar>
+                </div>
+                <div class="center">
+                  {{ userName }}
+                </div>
+                <div class="center">
+                  <el-row>
+                    <el-col :offset=6 :span="6" style="border-right:1px black solid">
+                      <div style="font-weight:800;font-size:16px">11</div>
+                      <div style="font-weight:800;margin-top:10px;font-size:13px" class="">Articles</div>
+                    </el-col>
+                    <el-col :span="6">
+                      <div style="font-weight:800;font-size:16px">120</div>
+                      <div style="font-weight:800;margin-top:10px;font-size:13px">Tags</div>
+                    </el-col>
+                  </el-row>
+                </div>
 
-              <el-divider></el-divider>
+              </div>
+              <!-- <el-divider></el-divider> -->
               <!-- 分类 -->
               <div>
                 <div class="title">
@@ -116,10 +97,13 @@
 </template>
 
 <script>
-
+import { ParticlesBg } from 'particles-bg-vue'
+import BlogList from '@/components/BlogList.vue'
 export default {
   name: 'HomeView',
   components: {
+    ParticlesBg,
+    BlogList
   },
   data () {
     return {
@@ -253,6 +237,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.user_info {
+  padding: 20px;
+  border-radius: 10px;
+  // background-color: #F6F8FC;
+}
+
 .user_tags {
   margin-top: 10px;
   padding: 10px;
@@ -268,7 +259,7 @@ export default {
   background-color: antiquewhite;
 }
 
-user_tags_item .text {
+.text {
   font-size: 13px;
   color: rgb(129, 129, 129);
 }
@@ -285,7 +276,7 @@ user_tags_item .text {
 .containerHeader {
   text-align: center;
   overflow: hidden;
-  background-image: url(@/assets/static/home/bg.svg);
+  // background-image: url(@/assets/static/home/bg.svg);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position-y: -220px;

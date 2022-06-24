@@ -31,23 +31,18 @@
                         <i class="el-icon-guide"></i>
                         <span slot="title">分类</span>
                     </el-menu-item>
-
-                    <el-menu-item index="/tags">
-                        <i class="el-icon-price-tag"></i>
-                        <span slot="title">标签</span>
-                    </el-menu-item>
-
                     <el-menu-item index="/timeline">
                         <i class="el-icon-time"></i>
-                        <span slot="title">时间轴</span>
+                        <span slot="title">归档</span>
                     </el-menu-item>
-                    <el-menu-item index="/chat">
-                        <i class="el-icon-chat-dot-round"></i>
-                        <span slot="title">好友</span>
+                    <el-menu-item index="/tags">
+                        <i class="el-icon-price-tag"></i>
+                        <span slot="title">生活</span>
                     </el-menu-item>
+
                     <el-menu-item index="/about">
                         <i class="el-icon-paperclip"></i>
-                        <span slot="title">关于</span>
+                        <span slot="title">链接</span>
                     </el-menu-item>
                 </el-menu>
             </el-col>
