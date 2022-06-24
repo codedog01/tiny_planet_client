@@ -10,10 +10,6 @@
                         <span style="font-size: 16px;font-weight: 800;">{{ author }}</span>
                     </el-col>
                 </el-row>
-                <div class="block">
-
-                </div>
-
             </el-col>
             <el-col :span="14">
                 <el-menu active-text-color="#51c4d3" text-color="#0f1423" :default-active="activeIndex"
@@ -31,15 +27,18 @@
                         <i class="el-icon-guide"></i>
                         <span slot="title">分类</span>
                     </el-menu-item>
+                    <el-menu-item index="/tags">
+                        <i class="el-icon-price-tag"></i>
+                        <span slot="title">标签</span>
+                    </el-menu-item>
                     <el-menu-item index="/timeline">
                         <i class="el-icon-time"></i>
                         <span slot="title">归档</span>
                     </el-menu-item>
-                    <el-menu-item index="/tags">
+                    <el-menu-item index="/life">
                         <i class="el-icon-price-tag"></i>
                         <span slot="title">生活</span>
                     </el-menu-item>
-
                     <el-menu-item index="/about">
                         <i class="el-icon-paperclip"></i>
                         <span slot="title">链接</span>

@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'BlogList',
+  name: 'blogList',
   props: {
     blogList: []
   }

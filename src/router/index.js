@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import CategoriesView from '../views/CategoriesView.vue'
 import LoginView from '../views/LoginView.vue'
 import TimeLineView from '../views/TimeLineView.vue'
+import TagsView from '../views/TagsView.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,14 @@ const routes = [
     name: '分类',
     meta: {
       title: '分类',
+      requireAuth: true
+    }
+  }, {
+    path: '/tags',
+    component: TagsView,
+    name: '标签',
+    meta: {
+      title: '标签',
       requireAuth: true
     }
   }, {

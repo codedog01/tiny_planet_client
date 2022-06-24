@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <BlogComponent :blogList="blogList">
-    <div class="" slot="header">
-
+    <div>
+        <BlogComponent :blogList="blogList">
+            <div slot="header">ss</div>
+        </BlogComponent>
     </div>
-    </BlogComponent>
-  </div>
 </template>
 
 <script>
 import BlogComponent from '@/components/blog/BlogComponent'
 
 export default {
-  name: 'categoriesView',
+  name: 'TagsView',
   components: {
     BlogComponent
   },
@@ -55,5 +53,4 @@ export default {
 </script>
 
 <style>
-
 </style>
