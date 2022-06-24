@@ -1,6 +1,6 @@
 <template>
     <el-container>
-        <el-header style="line-height:60px" ref="containerHeader">
+        <el-header v-if="type !== ''" style=" line-height:60px" ref="containerHeader">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span="16">
                     <div v-if="type === 'tags'">
@@ -22,7 +22,7 @@
         </el-header>
         <el-main class="container_main ">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
-                <el-col class="" :span="16">
+                <el-col class="" :span=span>
                     <div class="blog" v-for="blog in blogList" :key="blog.id">
                         <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}</div>
                         <el-row :gutter=24 type="flex" justify="start">
@@ -36,8 +36,8 @@
                                 <div class="text">
                                     <i class="el-icon-s-ticket"></i>
                                     <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
-                                        tag.name
-                                        }}</span>
+                                    tag.name
+                                    }}</span>
                                 </div>
                             </el-col>
                             <el-col :span="4">
@@ -65,7 +65,8 @@ export default {
       type: String,
       default: ''
     },
-    blogList: []
+    blogList: [],
+    span: { type: String, default: '16' }
   },
   data: () => {
     return {
@@ -76,4 +77,17 @@ export default {
 </script>
 
 <style>
+
+.blog {
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: all .3s;
+    overflow: hidden;
+    border-radius: .25rem;
+}
+
+.blog:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.2);
+}
 </style>

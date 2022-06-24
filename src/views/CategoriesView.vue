@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BlogComponent from '@/components/blog/BlogComponent'
+import BlogComponent from '@/components/BlogComponent.vue'
 
 export default {
   name: 'categoriesView',

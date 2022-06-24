@@ -17,8 +17,7 @@
         <el-row :gutter=24 type="flex" justify="center">
           <el-col :span="12">
             <div class="left">
-              <BlogList></BlogList>
-              <BlogComponent :blogList="blogList">
+              <BlogComponent :blogList="blogList" :span="24">
               </BlogComponent>
             </div>
           </el-col>
@@ -100,13 +99,11 @@
 
 <script>
 import { ParticlesBg } from 'particles-bg-vue'
-import BlogComponent from '@/components/blog/BlogComponent.vue'
-import BlogList from '@/components/blog/BlogList.vue'
+import BlogComponent from '@/components/BlogComponent.vue'
 export default {
   name: 'HomeView',
   components: {
     ParticlesBg,
-    BlogList,
     BlogComponent
   },
   data () {
