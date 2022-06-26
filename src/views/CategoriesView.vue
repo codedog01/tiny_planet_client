@@ -1,9 +1,6 @@
 <template>
   <div>
-    <BlogComponent :blogList="blogList">
-    <div class="" slot="header">
-
-    </div>
+    <BlogComponent :blogList="blogList" type="categories">
     </BlogComponent>
   </div>
 </template>

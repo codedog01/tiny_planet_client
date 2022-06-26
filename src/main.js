@@ -7,7 +7,6 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/element-variables.scss'
 import tagCloud from 'v-tag-cloud'
-
 import '@/assets/css/common.css'
 // 注册公共页面头
 import WebHeader from '@/components/WebHeader'

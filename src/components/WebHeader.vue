@@ -27,10 +27,7 @@
                         <i class="el-icon-guide"></i>
                         <span slot="title">分类</span>
                     </el-menu-item>
-                    <el-menu-item index="/tags">
-                        <i class="el-icon-price-tag"></i>
-                        <span slot="title">标签</span>
-                    </el-menu-item>
+
                     <el-menu-item index="/timeline">
                         <i class="el-icon-time"></i>
                         <span slot="title">归档</span>

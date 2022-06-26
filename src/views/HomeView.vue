@@ -1,5 +1,5 @@
 <template>
-  <div class="HoneView">
+  <div class="HoneView" ref="HoneView">
     <el-container>
       <el-header class="containerHeader" ref="containerHeader" height="450px">
         <div>
@@ -12,12 +12,11 @@
           </el-col>
         </el-row>
       </el-header>
-
       <el-main class="container_main ">
         <el-row :gutter=24 type="flex" justify="center">
           <el-col :span="12">
             <div class="left">
-              <BlogComponent :blogList="blogList" :span="24">
+              <BlogComponent :blogList="blogList" :span=24>
               </BlogComponent>
             </div>
           </el-col>
@@ -66,8 +65,7 @@
                   <span> Tags</span>
                 </div>
                 <div class="user_tags">
-                  <tag-cloud id="tagCloud" :data="hotTag" @mouseover.native="mouseoverTags" @clickTag="clickTagItem"
-                    :config="tagCloudConfig">
+                  <tag-cloud id="tagCloud" :data="hotTag" @clickTag="clickTagItem" :config="tagCloudConfig">
                   </tag-cloud>
                 </div>
               </div>
@@ -106,6 +104,7 @@ export default {
     ParticlesBg,
     BlogComponent
   },
+
   data () {
     return {
       tagCloudConfig: {
@@ -210,23 +209,6 @@ export default {
   methods: {
     clickTagItem (event) {
       console.log(event)
-    },
-
-    mouseoverTags (event) {
-      // const children = document.getElementById('tagCloud').childNodes
-      // console.log(typeof children)
-      // children.forEach((element) => {
-      //   console.log(element.nodevalue)
-      // })
-      // if (event.toElement.nodeName === 'P') {
-      //   const e = document.createEvent('MouseEvents')
-      //   e.initEvent('dblclick', true, true)
-      //   document.getElementById('world').dispatchEvent(e)
-
-      //   const es = event.toElement.style
-      //   es.setProperty('width', 100 + 'px')
-      //   es.setProperty('font-size', 24 + 'px')
-      // }
     }
   },
   created () {
@@ -238,7 +220,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .user_info {
   padding: 20px;
   border-radius: 10px;

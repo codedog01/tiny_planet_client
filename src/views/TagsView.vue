@@ -1,9 +1,8 @@
 <template>
-    <div>
-        <BlogComponent :blogList="blogList">
-            <div slot="header">ss</div>
-        </BlogComponent>
-    </div>
+  <div>
+    <BlogComponent :blogList="blogList" type="tags">
+    </BlogComponent>
+  </div>
 </template>
 
 <script>

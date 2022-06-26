@@ -1,15 +1,204 @@
 <template>
     <el-container>
-        <el-header v-if="type !== ''" style=" line-height:60px" ref="containerHeader">
+        <el-header v-if="type !== ''" style="height:60px line-height:60px;height: auto;" ref="containerHeader">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span="16">
-                    <div v-if="type === 'tags'">
+                    <div class="categories_dev">
+                        <div class="categories_item">
+                            <span class="title">Jadsdsva</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                        <div class="categories_item">
+                            <span class="title">Java</span>
+                            <span class="num">15</span>
+                        </div>
+                    </div>
+                    <div class="tags_dev">
                         <el-tag type=" success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
                         <el-tag type="info">标签三</el-tag>
                         <el-tag type="warning">标签四</el-tag>
                         <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
                         <el-tag type="success">标签二</el-tag>
                         <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="success">标签二</el-tag>
+                        <el-tag type="info">标签三</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="warning">标签四</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
+                        <el-tag type="danger">标签五</el-tag>
                         <el-tag type="warning">标签四</el-tag>
                         <el-tag type="danger">标签五</el-tag>
                         <el-tag type="success">标签二</el-tag>
@@ -23,31 +212,35 @@
         <el-main class="container_main ">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span=span>
-                    <div class="blog" v-for="blog in blogList" :key="blog.id">
-                        <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}</div>
-                        <el-row :gutter=24 type="flex" justify="start">
-                            <el-col :span="6">
-                                <div class="text">
-                                    <i class="el-icon-time"></i>
-                                    <span>{{ blog.createData }}</span>
-                                </div>
-                            </el-col>
-                            <el-col>
-                                <div class="text">
-                                    <i class="el-icon-s-ticket"></i>
-                                    <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
-                                    tag.name
-                                    }}</span>
-                                </div>
-                            </el-col>
-                            <el-col :span="4">
-                                <div class="text">
-                                    <i class="el-icon-user-solid"></i>
-                                    <span>{{ 11 }}</span>
-                                </div>
-                            </el-col>
-                        </el-row>
-                    </div>
+                    <ul v-infinite-scroll="load">
+                        <div class="blog" v-for="blog in blogList" :key="blog.id">
+                            <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
+                            </div>
+                            <el-row :gutter=24 type="flex" justify="start">
+                                <el-col :span="6">
+                                    <div class="text">
+                                        <i class="el-icon-time"></i>
+                                        <span>{{ blog.createData }}</span>
+                                    </div>
+                                </el-col>
+                                <el-col>
+                                    <div class="text">
+                                        <i class="el-icon-s-ticket"></i>
+                                        <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
+                                                tag.name
+                                        }}</span>
+                                    </div>
+                                </el-col>
+                                <el-col :span="4">
+                                    <div class="text">
+                                        <i class="el-icon-user-solid"></i>
+                                        <span>{{ 11 }}</span>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </div>
+                    </ul>
+
                 </el-col>
             </el-row>
         </el-main>
@@ -59,6 +252,7 @@
 export default {
   name: 'BlogComponent',
   components: {
+
   },
   props: {
     type: {
@@ -66,17 +260,64 @@ export default {
       default: ''
     },
     blogList: [],
-    span: { type: String, default: '16' }
+    span: { type: Number, default: 16 }
   },
   data: () => {
     return {
+    }
+  },
+  methods: {
+    load () {
+      //   this.$props.blogList.push({})
     }
   }
 
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.categories_item {
+    height: 45px;
+    width: 60px;
+    width: auto;
+    line-height: 45px;
+    font-size: 13px;
+    margin-left: 10px;
+    padding: 0 10px 0 10px;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.categories_item>.num {
+    background-color: rebeccapurple;
+    padding: 3px;
+    margin-left: 2px;
+    border-radius: 3px;
+}
+
+.categories_dev {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.categories_item:hover {
+    background-color: #3EAF7C;
+    color: white;
+}
+
+.tags_dev {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    height: auto;
+    align-items: center;
+}
+
+.tags_dev>span {
+    margin-right: 10px;
+    cursor: pointer;
+}
 
 .blog {
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);

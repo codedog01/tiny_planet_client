@@ -20,9 +20,9 @@ const routes = [
   }, {
     path: '/login',
     component: LoginView,
-    name: '分类',
+    name: '登录',
     meta: {
-      title: '分类',
+      title: '登录',
       requireAuth: true
     }
   },

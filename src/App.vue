@@ -1,22 +1,17 @@
 <template>
-  <div>
+  <div class="app">
     <WebHeader></WebHeader>
+    <el-backtop class="" target=".app"></el-backtop>
     <transition name="fade">
-      <router-view class="app"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
 
 <script>
 
-// components: {
-//   WebHeader
-// },
 </script>
-<style>
-    body {
-      /* background-color: #EBF0F5; */
-    }
+<style >
 .app {
   width: 100%;
   height: 100vh;
