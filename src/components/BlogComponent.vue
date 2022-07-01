@@ -57,7 +57,8 @@
         <el-main class="container_main ">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span=span>
-                    <div class="blog animate__fadeIn " v-for="blog in blogList" :key="blog.id">
+                    <div v-show="false" class="blog animate__fadeIn " v-for="blog in blogList"
+                        :key="blog.id">
                         <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
                         </div>
                         <el-row :gutter=24 type="flex" justify="start">
@@ -71,8 +72,8 @@
                                 <div class="text">
                                     <i class="el-icon-s-ticket"></i>
                                     <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
-                                            tag.name
-                                    }}</span>
+                                        tag.name
+                                        }}</span>
                                 </div>
                             </el-col>
                             <el-col :span="4">
@@ -96,6 +97,10 @@ export default {
   components: {
 
   },
+  mounted () {
+    // 滚动条的获取
+    window.addEventListener('scroll', this.handleScrollx, true)
+  },
   props: {
     type: {
       type: String,
@@ -109,8 +114,9 @@ export default {
     }
   },
   methods: {
-    load () {
-      //   this.$props.blogList.push({})
+    handleScrollx () {
+      console.log('滚动高度', window.pageYOffset)
+      console.log('距离顶部高度', this.$refs.obtain.getBoundingClientRect().top)
     }
   }
 
