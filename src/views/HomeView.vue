@@ -16,8 +16,10 @@
         <el-row :gutter=24 type="flex" justify="center">
           <el-col :span="12">
             <div class="left">
-              <BlogComponent :blogList="blogList" :span=24>
-              </BlogComponent>
+              <transition enter-active-class="animate__fadeIn" leave-active-class="animate__fadeOut">
+                <BlogComponent :blogList="blogList" :span=24>
+                </BlogComponent>
+              </transition>
             </div>
           </el-col>
           <el-col :span="6">
@@ -43,6 +45,7 @@
                     </el-col>
                   </el-row>
                 </div>
+                <button @click="click1">按钮</button>
 
               </div>
               <!-- <el-divider></el-divider> -->
@@ -209,6 +212,15 @@ export default {
   methods: {
     clickTagItem (event) {
       console.log(event)
+    },
+    click1 () {
+      this.blogList.push({
+        id: '1',
+        title: 'SpringBoot',
+        author: '肥羊',
+        createData: '2022/6/14',
+        tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
+      })
     }
   },
   created () {

@@ -12,6 +12,9 @@
 
 </script>
 <style >
+.animate{
+  transition: all .5s;
+}
 .app {
   width: 100%;
   height: 100vh;
