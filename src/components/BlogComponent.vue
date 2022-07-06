@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-header v-if="type !== ''" style="height:60px line-height:60px;height: auto;" ref="containerHeader">
-            <el-row :gutter="20" type="flex" justify="center" align="middle">
+            <el-row class="" :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span="16">
                     <div class="categories_div">
                         <div class="categories_item">
@@ -58,9 +58,9 @@
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span=span>
                     <div id="blogsDiv">
-                        <div class="blog animate__fadeIn animate__slow " :style="generateStyle(index)"
+                        <div class="blog animate__zoomIn " :style="generateStyle(index)"
                             v-for="(blog, index) in blogList" :key="blog.id">
-                            <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
+                            <div style="font-size: 15px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
                             </div>
                             <el-row :gutter=24 type="flex" justify="start">
                                 <el-col :span="6">
@@ -73,8 +73,8 @@
                                     <div class="text">
                                         <i class="el-icon-s-ticket"></i>
                                         <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
-                                            tag.name
-                                            }}</span>
+                                                tag.name
+                                        }}</span>
                                     </div>
                                 </el-col>
                                 <el-col :span="4">
@@ -102,6 +102,7 @@ export default {
     // 滚动条的获取
     window.addEventListener('scroll', this.handleScrollx, true)
   },
+
   props: {
     type: {
       type: String,
@@ -116,14 +117,12 @@ export default {
   },
   methods: {
     generateStyle (index) {
-      return index <= 5 ? ' visibility: visible;' : 'collapse'
+      return index < 5 ? 'display : block;' : 'display : none;'
     },
     handleScrollx () {
-      //   console.log('距离顶部高度', this.$refs.obtain.getBoundingClientRect().top)
-      document.getElementById('blogsDiv').childNodes.forEach(item => {
-        console.log(item.getBoundingClientRect().top)
-        if (item.getBoundingClientRect().top < 600) {
-          item.style.visibility = 'visible'
+      document.getElementById('blogsDiv').childNodes.forEach((item, index) => {
+        if (item.getBoundingClientRect().top < 770 && item.style.display === 'none') {
+          item.style.display = 'block'
         }
       })
     }
@@ -133,15 +132,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 .categories_item {
     height: 45px;
     width: 60px;
     width: auto;
+    border-radius: 3px;
     line-height: 45px;
     font-size: 13px;
     margin-left: 10px;
     margin-top: 5px;
+    transition: all .3s;
     padding: 0 10px 0 10px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -179,15 +179,18 @@ export default {
     margin-top: 5px;
 }
 
+.tags_div>span:hover {
+    transform: scale(1.04);
+}
+
 .blog {
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 20px;
-    transition: all 1s;
+    transition: all .3s;
     overflow: hidden;
     border-radius: .25rem;
-    // animation-duration: .5s;
-    visibility: collapse
+    animation-duration: 1.5s;
 }
 
 .blog:hover {

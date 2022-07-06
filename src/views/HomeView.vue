@@ -5,25 +5,23 @@
         <div>
           <particles-bg type="square" :bg="true" :num=11 />
         </div>
-        <el-row type="flex" justify="center" align="middle">
+        <el-row class="" type="flex" justify="center" align="middle">
           <el-col>
             <div style="font-size:35px; font-weight: 400;">LY'Blog</div>
             <div style="margin-top:20px;font-size:25px;" class="">😃前途似海 来日方长😋</div>
           </el-col>
         </el-row>
       </el-header>
-      <el-main class="container_main ">
+      <el-main class="container_main " ref="MainRef">
         <el-row :gutter=24 type="flex" justify="center">
-          <el-col :span="12">
+          <el-col :span="13">
             <div class="left">
-              <transition enter-active-class="animate__fadeIn" leave-active-class="animate__fadeOut">
-                <BlogComponent :blogList="blogList" :span=24>
-                </BlogComponent>
-              </transition>
+              <BlogComponent :blogList="blogList" :span=24>
+              </BlogComponent>
             </div>
           </el-col>
           <el-col :span="6">
-            <div class="right">
+            <div class="right" v-show="blogList.length !== 0">
               <div class="user_info">
                 <div class="center">
                   <el-avatar :size="100" src="https://blog.lystu.cn/avatar.webp">
@@ -35,17 +33,19 @@
                 </div>
                 <div class="center">
                   <el-row>
-                    <el-col :offset=6 :span="6" style="border-right:1px black solid">
+                    <el-col :offset=6 :span="6" style="margin-top: 10px; border-right:1px black solid">
                       <div style="font-weight:800;font-size:16px">11</div>
                       <div style="font-weight:800;margin-top:10px;font-size:13px" class="">Articles</div>
                     </el-col>
-                    <el-col :span="6">
+                    <el-col :span="6" style="margin-top: 10px;">
                       <div style="font-weight:800;font-size:16px">120</div>
                       <div style="font-weight:800;margin-top:10px;font-size:13px">Tags</div>
                     </el-col>
                   </el-row>
                 </div>
               </div>
+              <el-divider></el-divider>
+
               <!-- <el-divider></el-divider> -->
               <!-- 分类 -->
               <div>
@@ -89,7 +89,7 @@
           </el-col>
         </el-row>
       </el-main>
-      <el-footer>footer
+      <el-footer ref="FooterRef">footer
       </el-footer>
     </el-container>
 
@@ -130,49 +130,52 @@ export default {
         { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' },
         { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }],
       userName: '肥羊',
-      blogList: [{
-        id: '7',
-        title: 'MyBatis',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'MyBatis' }]
-      }, {
-        id: '6',
-        title: 'MyBatis',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'MyBatis' }]
-      }, {
-        id: '5',
-        title: 'MyBatis',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'MyBatis' }]
-      }, {
-        id: '4',
-        title: 'Spring',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'Spring' }]
-      }, {
-        id: '3',
-        title: 'SpringMVC',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'SpringMVC' }]
-      }, {
-        id: '2',
-        title: 'SpringBoot',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
-      }, {
-        id: '1',
-        title: 'SpringBoot',
-        author: '肥羊',
-        createData: '2022/6/14',
-        tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
-      }],
+      blogList: [
+
+        // {
+        //   id: '7',
+        //   title: 'MyBatis',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'MyBatis' }]
+        // }, {
+        //   id: '6',
+        //   title: 'MyBatis',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'MyBatis' }]
+        // }, {
+        //   id: '5',
+        //   title: 'MyBatis',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'MyBatis' }]
+        // }, {
+        //   id: '4',
+        //   title: 'Spring',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'Spring' }]
+        // }, {
+        //   id: '3',
+        //   title: 'SpringMVC',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'SpringMVC' }]
+        // }, {
+        //   id: '2',
+        //   title: 'SpringBoot',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
+        // }, {
+        //   id: '1',
+        //   title: 'SpringBoot',
+        //   author: '肥羊',
+        //   createData: '2022/6/14',
+        //   tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
+        // }
+      ],
       userInfo: {
         categories: [{
           id: 3,
@@ -237,14 +240,20 @@ export default {
   created () {
     this.clientWidth = document.documentElement.clientWidth
     this.clientHeight = document.documentElement.clientHeight
+  },
+  mounted () {
+    if (this.blogList.length === 0) {
+      console.log(this.$refs.MainRef.$el.style)
+      // this.$refs.MainRef.getRootNode.height = this.clientHeight - 450 - this.$refs.FooterRef.getRootNode.height
+    }
   }
 
 }
 </script>
 
 <style lang="scss" scoped>
-.test {
-  animation-duration: 1s;
+.container_main {
+  background-color: red;
 }
 
 .user_info {
@@ -304,6 +313,10 @@ export default {
   line-height: 30px;
 }
 
+.categories:hover {
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 .categories_name {
   font-size: 15px;
   font-weight: bold;
@@ -321,6 +334,7 @@ export default {
 .right {
   // height: 600px;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
   padding: 20px;
   transition: all .3s;
   overflow: hidden;
