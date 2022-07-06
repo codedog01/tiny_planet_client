@@ -57,32 +57,34 @@
         <el-main class="container_main ">
             <el-row :gutter="20" type="flex" justify="center" align="middle">
                 <el-col class="" :span=span>
-                    <div v-show="false" class="blog animate__fadeIn " v-for="blog in blogList"
-                        :key="blog.id">
-                        <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
+                    <div id="blogsDiv">
+                        <div class="blog animate__fadeIn animate__slow " :style="generateStyle(index)"
+                            v-for="(blog, index) in blogList" :key="blog.id">
+                            <div style="font-size: 20px; font-weight: 800;margin-bottom:20px">{{ blog.title }}
+                            </div>
+                            <el-row :gutter=24 type="flex" justify="start">
+                                <el-col :span="6">
+                                    <div class="text">
+                                        <i class="el-icon-time"></i>
+                                        <span>{{ blog.createData }}</span>
+                                    </div>
+                                </el-col>
+                                <el-col>
+                                    <div class="text">
+                                        <i class="el-icon-s-ticket"></i>
+                                        <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
+                                            tag.name
+                                            }}</span>
+                                    </div>
+                                </el-col>
+                                <el-col :span="4">
+                                    <div class="text">
+                                        <i class="el-icon-user-solid"></i>
+                                        <span>{{ 11 }}</span>
+                                    </div>
+                                </el-col>
+                            </el-row>
                         </div>
-                        <el-row :gutter=24 type="flex" justify="start">
-                            <el-col :span="6">
-                                <div class="text">
-                                    <i class="el-icon-time"></i>
-                                    <span>{{ blog.createData }}</span>
-                                </div>
-                            </el-col>
-                            <el-col>
-                                <div class="text">
-                                    <i class="el-icon-s-ticket"></i>
-                                    <span v-for="tag in blog.tags" :key="tag.id" style="margin-right:5px">{{
-                                        tag.name
-                                        }}</span>
-                                </div>
-                            </el-col>
-                            <el-col :span="4">
-                                <div class="text">
-                                    <i class="el-icon-user-solid"></i>
-                                    <span>{{ 11 }}</span>
-                                </div>
-                            </el-col>
-                        </el-row>
                     </div>
                 </el-col>
             </el-row>
@@ -91,7 +93,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'BlogComponent',
   components: {
@@ -114,9 +115,17 @@ export default {
     }
   },
   methods: {
+    generateStyle (index) {
+      return index <= 5 ? ' visibility: visible;' : 'collapse'
+    },
     handleScrollx () {
-      console.log('滚动高度', window.pageYOffset)
-      console.log('距离顶部高度', this.$refs.obtain.getBoundingClientRect().top)
+      //   console.log('距离顶部高度', this.$refs.obtain.getBoundingClientRect().top)
+      document.getElementById('blogsDiv').childNodes.forEach(item => {
+        console.log(item.getBoundingClientRect().top)
+        if (item.getBoundingClientRect().top < 600) {
+          item.style.visibility = 'visible'
+        }
+      })
     }
   }
 
@@ -124,6 +133,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .categories_item {
     height: 45px;
     width: 60px;
@@ -173,9 +183,11 @@ export default {
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 20px;
-    transition: all .3s;
+    transition: all 1s;
     overflow: hidden;
     border-radius: .25rem;
+    // animation-duration: .5s;
+    visibility: collapse
 }
 
 .blog:hover {

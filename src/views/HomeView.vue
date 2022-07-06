@@ -45,8 +45,6 @@
                     </el-col>
                   </el-row>
                 </div>
-                <button @click="click1">按钮</button>
-
               </div>
               <!-- <el-divider></el-divider> -->
               <!-- 分类 -->
@@ -110,6 +108,7 @@ export default {
 
   data () {
     return {
+      isV: true,
       tagCloudConfig: {
         radius: 120, // 滚动半径，Number，单位px
         maxFont: 24, // 最大字体大小
@@ -132,6 +131,18 @@ export default {
         { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }],
       userName: '肥羊',
       blogList: [{
+        id: '7',
+        title: 'MyBatis',
+        author: '肥羊',
+        createData: '2022/6/14',
+        tags: [{ id: '1', name: 'MyBatis' }]
+      }, {
+        id: '6',
+        title: 'MyBatis',
+        author: '肥羊',
+        createData: '2022/6/14',
+        tags: [{ id: '1', name: 'MyBatis' }]
+      }, {
         id: '5',
         title: 'MyBatis',
         author: '肥羊',
@@ -232,6 +243,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.test {
+  animation-duration: 1s;
+}
+
 .user_info {
   padding: 20px;
   border-radius: 10px;
