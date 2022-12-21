@@ -12,7 +12,7 @@ import '@/assets/css/common.css'
 import 'animate.css'
 // 注册公共页面头
 import WebHeader from '@/components/WebHeader'
-
+import '@/assets/js/check'
 Vue.component('WebHeader', WebHeader)
 // 关闭生产提示
 Vue.config.productionTip = false
@@ -20,11 +20,14 @@ Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.use(store)
 Vue.use(tagCloud)
+
 new Vue({
   router,
-
   render: h => h(App),
   beforeCreate () {
     Vue.prototype.$bus = this
+  },
+  mounted () {
   }
+
 }).$mount('#app')

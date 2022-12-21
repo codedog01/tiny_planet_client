@@ -1,5 +1,5 @@
 NODE_ENV = 'test'
 /* 请求接口地址 */
-VUE_APP_INTERFACE_URL = "http://localhost:1401"
+VUE_APP_INTERFACE_URL = "http://localhost:1313"
 /* proxy代理地址 */
-VUE_APP_PROXY_URL = 'http://localhost:1401/api'
+VUE_APP_PROXY_URL = 'http://localhost:1313/api'

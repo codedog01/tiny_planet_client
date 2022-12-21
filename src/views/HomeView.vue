@@ -1,231 +1,41 @@
 <template>
   <div class="HoneView" ref="HoneView">
-    <el-container>
-      <el-header class="containerHeader" ref="containerHeader" height="450px">
-        <div>
-          <particles-bg type="square" :bg="true" :num=11 />
-        </div>
-        <el-row class="" type="flex" justify="center" align="middle">
-          <el-col>
-            <div style="font-size:35px; font-weight: 400;">LY'Blog</div>
-            <div style="margin-top:20px;font-size:25px;" class="">😃前途似海 来日方长😋</div>
-          </el-col>
-        </el-row>
-      </el-header>
-      <el-main class="container_main " ref="MainRef">
-        <el-row :gutter=24 type="flex" justify="center">
-          <el-col :span="13">
-            <div class="left">
-              <BlogComponent :blogList="blogList" :span=24>
-              </BlogComponent>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="right" v-show="blogList.length !== 0">
-              <div class="user_info">
-                <div class="center">
-                  <el-avatar :size="100" src="https://blog.lystu.cn/avatar.webp">
-                    <img src="https://blog.lystu.cn/avatar.webp" />
-                  </el-avatar>
-                </div>
-                <div class="center">
-                  {{ userName }}
-                </div>
-                <div class="center">
-                  <el-row>
-                    <el-col :offset=6 :span="6" style="margin-top: 10px; border-right:1px black solid">
-                      <div style="font-weight:800;font-size:16px">11</div>
-                      <div style="font-weight:800;margin-top:10px;font-size:13px" class="">Articles</div>
-                    </el-col>
-                    <el-col :span="6" style="margin-top: 10px;">
-                      <div style="font-weight:800;font-size:16px">120</div>
-                      <div style="font-weight:800;margin-top:10px;font-size:13px">Tags</div>
-                    </el-col>
-                  </el-row>
-                </div>
-              </div>
-              <el-divider></el-divider>
 
-              <!-- <el-divider></el-divider> -->
-              <!-- 分类 -->
-              <div>
-                <div class="title">
-                  <i class="el-icon-menu"></i>
-                  <span> Categories</span>
-                </div>
-                <div class="categories" v-for="category in userInfo.categories" :key="category.id">
-                  <div class="categories_name">{{ category.name }}</div>
-                  <div class="categories_count">{{ category.count }}</div>
-                </div>
-              </div>
-              <el-divider></el-divider>
-              <!-- 标签 -->
-              <div>
-                <div class="title">
-                  <i class="el-icon-s-flag"></i>
-                  <span> Tags</span>
-                </div>
-                <div class="user_tags">
-                  <tag-cloud id="tagCloud" :data="hotTag" @clickTag="clickTagItem" :config="tagCloudConfig">
-                  </tag-cloud>
-                </div>
-              </div>
-              <el-divider></el-divider>
-              <!-- 友情 -->
-              <div>
-                <div class="title">
-                  <i class="el-icon-s-finance"></i>
-                  <span> Friend Links</span>
-                </div>
-                <div class="user_tags">
-                  <el-popover placement="bottom" title="缄默" width="200" trigger="hover"
-                    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-                    <el-button slot="reference">hover 激活</el-button>
-                  </el-popover>
-                </div>
+    <el-button @click.native.prevent="down" class="codebtn">
+      下载</el-button>
+    <div style="position: fixed;bottom: 0px;width: 100%;z-index: 99;">
 
-              </div>
-            </div>
-          </el-col>
-        </el-row>
-      </el-main>
-      <el-footer ref="FooterRef">footer
-      </el-footer>
-    </el-container>
+      <div
+        style="  width: 100%; line-height: 35px; background:white; padding-top:5px; font-size:14px; font-weight:500; text-align:center;">
+        Copyright &copy; 隐藏原始标签，新创建一个标签 Co.,Ltd
+      </div>
+
+    </div>
 
   </div>
 </template>
 
 <script>
-import { ParticlesBg } from 'particles-bg-vue'
-import BlogComponent from '@/components/BlogComponent.vue'
+import * as API from '@/server/api'
+
 export default {
   name: 'HomeView',
   components: {
-    ParticlesBg,
-    BlogComponent
   },
 
-  data () {
-    return {
-      isV: true,
-      tagCloudConfig: {
-        radius: 120, // 滚动半径，Number，单位px
-        maxFont: 24, // 最大字体大小
-        color: '', // 字体颜色。为null时随机s
-        rotateAngleXbase: 600, // X方向旋转速度基数，数越小速度越快
-        rotateAngleYbase: 600, // Y方向旋转速度基数，数越小速度越快
-        hover: false // 是否开启悬浮联动
-      },
-      hotTag: [
-        { id: '-1', name: '冷澳' },
-        { id: '0ef028e5278f4f5ca31f99f1bd22b1cc', name: '剑河县' },
-        { id: '1a32ef04d3c548eaa6777abb46da32f2', name: '台江县' },
-        { id: '2c26488325bd493687d16315fe0e5fdd', name: '岑巩县' },
-        { id: '3a786111828a4b9f89ae9da25753eedd', name: '黎平' },
-        { id: '4ed593eed91b4244969995237f5c96c5', name: '丹寨县' },
-        { id: '615d2c178f1a47cb8d473823e74f5386', name: '凯里市' },
-        { id: '76f652df03db43349272a9aff492b065', name: '榕江县' },
-        { id: '8ff29d0d35e548feb945063b34ed9c9b', name: '黄平县' },
-        { id: 'a8ac2170008746fdadc05ea461bc5e37', name: '雷山县' },
-        { id: '05023f8da31c4b4187cc6899e2a3aec2', name: '镇远县' }],
-      userName: '肥羊',
-      blogList: [
-
-        // {
-        //   id: '7',
-        //   title: 'MyBatis',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'MyBatis' }]
-        // }, {
-        //   id: '6',
-        //   title: 'MyBatis',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'MyBatis' }]
-        // }, {
-        //   id: '5',
-        //   title: 'MyBatis',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'MyBatis' }]
-        // }, {
-        //   id: '4',
-        //   title: 'Spring',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'Spring' }]
-        // }, {
-        //   id: '3',
-        //   title: 'SpringMVC',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'SpringMVC' }]
-        // }, {
-        //   id: '2',
-        //   title: 'SpringBoot',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
-        // }, {
-        //   id: '1',
-        //   title: 'SpringBoot',
-        //   author: '肥羊',
-        //   createData: '2022/6/14',
-        //   tags: [{ id: '1', name: 'SpringBoot' }, { id: '2', name: '练习' }]
-        // }
-      ],
-      userInfo: {
-        categories: [{
-          id: 3,
-          name: 'Java',
-          count: 55
-        }, {
-          id: 2,
-          name: 'Linux',
-          count: 100
-        }, {
-          id: 1,
-          name: 'MySQL',
-          count: 9
-        }],
-        tags: [
-          {
-            id: '1',
-            name: 'SpringSpring'
-          }, {
-            id: '2',
-            name: 'SprinSpringSpringg'
-          }, {
-            id: '3',
-            name: 'SprSpringing'
-          }, {
-            id: '4',
-            name: 'Sprdeing'
-          }, {
-            id: '5',
-            name: 'Sprewing'
-          }, {
-            id: '6',
-            name: 'Sprytruing'
-          }, {
-            id: '7',
-            name: 'Spring'
-          }, {
-            id: '8',
-            name: 'Spring'
-          }, {
-            id: '9',
-            name: 'Spring'
-          }
-        ]
-      }
-    }
-  },
   methods: {
-    clickTagItem (event) {
-      console.log(event)
+    down (event) {
+      API.down().then(res => {
+        const blob = new Blob([res.data], {
+          type: 'application/zip'
+        })
+        const a = document.createElement('a')
+        a.href = URL.createObjectURL(blob)
+        a.download = 'fileName.zip'
+        document.body.appendChild(a) // 追加a标签
+        a.click() // a标签点击
+        document.body.removeChild(a) // 移除节点
+      })
     },
     click1 () {
       this.blogList.push({
@@ -243,8 +53,8 @@ export default {
   },
   mounted () {
     if (this.blogList.length === 0) {
-      console.log(this.$refs.MainRef.$el.style)
-      // this.$refs.MainRef.getRootNode.height = this.clientHeight - 450 - this.$refs.FooterRef.getRootNode.height
+    // console.log(this.$refs.MainRef.$el.style)
+    // this.$refs.MainRef.getRootNode.height = this.clientHeight - 450 - this.$refs.FooterRef.getRootNode.height
     }
   }
 

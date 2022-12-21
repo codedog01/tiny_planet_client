@@ -189,17 +189,13 @@ export default {
     passwordLogin () {
       const { ...data } = this.loginForm
       data.password = AesUtil.encrypt(this.loginForm.password)
-      const a = API.passwordLogin(data).then((res) => {
-        console.log('res', res)
-        if (res.data !== null) {
-          this.$message.success('登录成功！')
-        } else {
-          this.$message.error('手机号或密码错误！')
-        }
+      API.passwordLogin(data).then((res) => {
+        this.$message.success('登录成功！')
+        localStorage.setItem('accountInfo', res.data)
+        this.$router.push({ path: '/home' })
       }).catch(res => {
-        console.log(res)
+        this.$message.error(res.msg)
       })
-      console.log('ssss', a)
     },
     faceLogin () {
       const canvas = document.getElementById('canvas')
@@ -272,7 +268,6 @@ export default {
 
       console.log('trackerTask', this.trackerTask)
       tracker.on('track', function (event) {
-        console.log(event)
         context.clearRect(0, 0, canvas.width, canvas.height)
 
         event.data.forEach(function (rect) {
